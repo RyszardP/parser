@@ -1,6 +1,7 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,10 +21,20 @@ public class RalParser {
         Document page = getPage();
         // css query language
         Element tableCont = page.select("div[id=content]").first();
+        Elements names = tableCont.select("li[class=dark]");
+        Elements rals = tableCont.select("h3");
+        Elements values = tableCont.select("span[class=rb-temp]");
        // Element tableCont = page.select("table[class=wt]").first();
-        System.out.println(tableCont);
-        String name;
-        System.out.println("RAL     name    .jpg");
+       // System.out.println(tableCont);
+       // System.out.println(names);
+       // System.out.println(rals);
+       // System.out.println(values);
+
+        for (Element ral : names){
+            String nameRal = ral.select("h3").text();
+            System.out.println(nameRal+"RAL     name    .jpg");
+        }
+
 
     }
 }
