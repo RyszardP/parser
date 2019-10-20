@@ -17,7 +17,7 @@ public class NcsParser {
         return page;
     }
 
-    private static Pattern pattern = Pattern.compile("\\w{3,}");
+    private static Pattern pattern = Pattern.compile("(.*)(\\d+)(.*)");
 
     private static String getNcsFromString(String StringNcs) throws Exception {
         Matcher matcher = pattern.matcher(StringNcs);
@@ -31,7 +31,7 @@ public class NcsParser {
 
         //System.out.println(getPage()); // print all page
         Document page = getPage();
-        Element tableCont = page.select("table[width=920]").first();
+        Element tableCont = page.select("table[width=920]").first(); // find table
         Elements ncsS = tableCont.select("span");
        // System.out.println(ncsS);
 
@@ -39,6 +39,7 @@ public class NcsParser {
             String nameNcs = element.select("span").text();
             String ncsNamesS = getNcsFromString(nameNcs);
             System.out.println(ncsNamesS);
+
         }
     }
 

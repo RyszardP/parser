@@ -28,12 +28,12 @@ public class RaParserSecond {
 
     public static void main(String[] args) throws Exception {
         Document page = getPage();
-        Element tableCont = page.select("table[width=912]").first();
+        Element tableCont = page.select("table[width=912]").first(); // find table
         Elements rals = tableCont.select("span");
        // System.out.println(rals);
 
         for (Element ral : rals){
-            String nameRal = ral.select("span").text();
+                String nameRal = ral.select("span").text();
            String ralS = getRalFromString(nameRal);
             System.out.println(ralS);
         }
